@@ -8,24 +8,11 @@ export default function Messages() {
     <div className="Messages">
       <div className="EndOfMessages">That's every message!</div>
       {message.map((mess, index) => {
-        return index === 0 ? (
-          <div key={mess.id}>
-            <div className="Day">
-              <div className="DayLine" />
-              <div className="DayText">12/6/2018</div>
-              <div className="DayLine" />
-            </div>
-            <div className="Message with-avatar">
-              <div className="Avatar" />
-              <div className="Author">
-                <div>
-                  <span className="UserName">Ryan Florence </span>
-                  <span className="TimeStamp">3:37 PM</span>
-                </div>
-                <div className="MessageContent">{mess.text} hello</div>
-              </div>
-            </div>
-          </div>
+        const showDate = false;
+        const previous = message[index - 1];
+        const avatarCondition = !previous || mess.user.id !== previous.user.id;
+        return avatarCondition ? (
+          <ShowAvatar key={mess.id} mess={mess} showDate={showDate} />
         ) : (
           <div key={mess.id}>
             <div className="Message no-avatar">
@@ -37,3 +24,28 @@ export default function Messages() {
     </div>
   );
 }
+
+const ShowAvatar = ({ mess, showDate }) => {
+  return (
+    <div>
+      {showDate && (
+        <div className="Day">
+          <div className="DayLine" />
+          <div className="DayText">12/6/2018</div>
+          <div className="DayLine" />
+        </div>
+      )}
+
+      <div className="Message with-avatar">
+        <div className="Avatar" />
+        <div className="Author">
+          <div>
+            <span className="UserName">Tashfeen Rao </span>
+            <span className="TimeStamp">3:37 PM</span>
+          </div>
+          <div className="MessageContent">{mess.text}</div>
+        </div>
+      </div>
+    </div>
+  );
+};

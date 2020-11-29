@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../../firebase";
 
-export default function ChatInputBox() {
+export default function ChatInputBox({ user }) {
   const [input, setInput] = useState("");
 
   const handleSubmit = (event) => {
@@ -9,7 +9,11 @@ export default function ChatInputBox() {
     db.collection("channels")
       .doc("random")
       .collection("messages")
-      .add({ text: input, createdAt: new Date() });
+      .add({
+        user: db.collection("users").doc(user.id),
+        text: input,
+        createdAt: new Date(),
+      });
     event.target.reset();
   };
   return (
