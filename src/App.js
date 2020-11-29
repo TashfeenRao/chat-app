@@ -4,6 +4,36 @@ import Nav from "./components/Nav/Nav";
 import { firebase } from "./firebase";
 
 function App() {
+  const user = useAuth();
+  return user ? (
+    <div className="App">
+      <Nav user={user} />
+      <Channel />
+    </div>
+  ) : (
+    <Login />
+  );
+}
+
+const Login = () => {
+  const handleSignIn = async () => {
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      await firebase.auth().signInWithPopup(provider);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div className="Login">
+      <h1>Chat !</h1>
+      <button onClick={handleSignIn}>SignIn</button>
+    </div>
+  );
+};
+
+const useAuth = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -20,25 +50,7 @@ function App() {
     });
   }, []);
 
-  const handleSignIn = async () => {
-    try {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      await firebase.auth().signInWithPopup(provider);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  return user ? (
-    <div className="App">
-      <Nav user={user} />
-      <Channel />
-    </div>
-  ) : (
-    <div className="Login">
-      <h1>Chat !</h1>
-      <button onClick={handleSignIn}>SignIn</button>
-    </div>
-  );
-}
+  return user;
+};
 
 export default App;
