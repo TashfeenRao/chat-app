@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import useCollection from "../../custom/useCollections";
 
-export default function Nav() {
+export default function Nav({ user }) {
   const channels = useCollection("channels");
   return (
     <div className="Nav">
       <div className="User">
-        <img
-          className="UserImage"
-          alt="whatever"
-          src="https://placekitten.com/64/64"
-        />
+        <img className="UserImage" alt="whatever" src={user.photoUrl} />
         <div>
-          <div>Tashfeen Rao</div>
+          <div>{user.displayName}</div>
           <div>
             <button className="text-button">log out</button>
           </div>

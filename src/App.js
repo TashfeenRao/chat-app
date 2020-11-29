@@ -7,9 +7,13 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    return firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setUser(user);
+        setUser({
+          displayName: user.displayName,
+          photoUrl: user.photoURL,
+          id: user.uid,
+        });
       } else {
         setUser(null);
       }
@@ -26,7 +30,7 @@ function App() {
   };
   return user ? (
     <div className="App">
-      <Nav />
+      <Nav user={user} />
       <Channel />
     </div>
   ) : (
