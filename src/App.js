@@ -2,16 +2,31 @@ import React, { useEffect, useState } from "react";
 import Channel from "./components/Channels/Channel";
 import Nav from "./components/Nav/Nav";
 import { db, firebase } from "./firebase";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 function App() {
   const user = useAuth();
-  return user ? (
-    <div className="App">
-      <Nav user={user} />
-      <Channel user={user} />
-    </div>
-  ) : (
-    <Login />
+
+  if (!user) return <Login />;
+  return (
+    <Router>
+      <div className="App">
+        <Nav user={user} />
+        {user && (
+          <Switch>
+            <Route path="/channel/:channelId">
+              <Channel user={user} />
+            </Route>
+            <Redirect to="/channel/general" />
+          </Switch>
+        )}
+      </div>
+    </Router>
   );
 }
 

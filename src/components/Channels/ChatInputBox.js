@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { db } from "../../firebase";
 
-export default function ChatInputBox({ user }) {
+export default function ChatInputBox({ user, channelId }) {
   const [input, setInput] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     db.collection("channels")
-      .doc("random")
+      .doc(channelId)
       .collection("messages")
       .add({
         user: db.collection("users").doc(user.id),

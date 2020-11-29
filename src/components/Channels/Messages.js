@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import useCollection from "../../custom/useCollections";
 import { db } from "../../firebase";
 
-export default function Messages() {
-  const message = useCollection("channels/random/messages", "createdAt");
-
+export default function Messages({ channelId }) {
+  const message = useCollection(`channels/${channelId}/messages`, "createdAt");
   return (
     <div className="Messages">
       <div className="EndOfMessages">That's every message!</div>

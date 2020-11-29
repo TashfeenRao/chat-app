@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCollection from "../../custom/useCollections";
 import { firebase } from "../../firebase";
 
@@ -6,9 +7,9 @@ export default function Nav({ user }) {
   return (
     <div className="Nav">
       <div className="User">
-        <img className="UserImage" alt="whatever" src={user.photoUrl} />
+        <img className="UserImage" alt="whatever" src={user && user.photoUrl} />
         <div>
-          <div>{user.displayName}</div>
+          <div>{user && user.displayName}</div>
           <div>
             <button
               onClick={() => {
@@ -23,9 +24,9 @@ export default function Nav({ user }) {
       </div>
       <nav className="ChannelNav">
         {channels.map((channel) => (
-          <a key={channel.id} href={`/channel/${channel.id}`}>
+          <Link key={channel.id} to={`/channel/${channel.id}`}>
             {channel.id}
-          </a>
+          </Link>
         ))}
       </nav>
     </div>

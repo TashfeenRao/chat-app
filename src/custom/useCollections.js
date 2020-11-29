@@ -8,14 +8,14 @@ const useCollection = (path, order) => {
     if (order) {
       collection = db.collection(path).orderBy(order);
     }
-    collection.onSnapshot((snapshot) => {
+    return collection.onSnapshot((snapshot) => {
       const docs = [];
       snapshot.forEach((doc) => {
         docs.push({ ...doc.data(), id: doc.id });
       });
       setDocs(docs);
     });
-  }, []);
+  }, [path, order]);
   return docs;
 };
 export default useCollection;
