@@ -9,7 +9,7 @@ export default function Messages() {
       <div className="EndOfMessages">That's every message!</div>
       {message.map((mess, index) => {
         return index === 0 ? (
-          <div>
+          <div key={mess.id}>
             <div className="Day">
               <div className="DayLine" />
               <div className="DayText">12/6/2018</div>
@@ -27,7 +27,7 @@ export default function Messages() {
             </div>
           </div>
         ) : (
-          <div>
+          <div key={mess.id}>
             <div className="Message no-avatar">
               <div className="MessageContent">{mess.text}</div>
             </div>
