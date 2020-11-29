@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useCollection from "../../custom/useCollections";
+import useDoc from "../../custom/useDocWithCache";
 import { db } from "../../firebase";
 
 export default function Messages({ channelId }) {
@@ -25,15 +26,6 @@ export default function Messages({ channelId }) {
     </div>
   );
 }
-
-const useDoc = (path) => {
-  const [docs, setDocs] = useState({});
-
-  useEffect(() => {
-    db.doc(path).onSnapshot((doc) => setDocs({ ...doc.data(), id: doc.id }));
-  }, []);
-  return docs;
-};
 
 const ShowAvatar = ({ mess, showDate }) => {
   const author = useDoc(mess.user.path);
