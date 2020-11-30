@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import useCollection from "../../custom/useCollections";
 import useDoc from "../../custom/useDocWithCache";
-import { db } from "../../firebase";
+import formatDate from "date-fns/format";
 
 export default function Messages({ channelId }) {
   const message = useCollection(`channels/${channelId}/messages`, "createdAt");
@@ -12,7 +10,7 @@ export default function Messages({ channelId }) {
       {message.map((mess, index) => {
         const showDate = false;
         const previous = message[index - 1];
-        const avatarCondition = !previous || mess.user.id !== previous.user.id;
+        const avatarCondition = decideAvatar(previous, mess);
         return avatarCondition ? (
           <ShowAvatar key={mess.id} mess={mess} showDate={showDate} />
         ) : (
@@ -47,11 +45,23 @@ const ShowAvatar = ({ mess, showDate }) => {
         <div className="Author">
           <div>
             <span className="UserName">{author && author.displayName} </span>
-            <span className="TimeStamp">3:37 PM</span>
+            <span className="TimeStamp">
+              {formatDate(mess.createdAt.seconds * 1000, "h:mm a")}
+            </span>
           </div>
           <div className="MessageContent">{mess.text}</div>
         </div>
       </div>
     </div>
   );
+};
+
+const decideAvatar = (previous, message) => {
+  if (!previous) return true;
+  if (message.user.id !== previous.user.id) return true;
+
+  const forAwhile =
+    message.createdAt.seconds - previous.createdAt.seconds > 180;
+
+  return forAwhile;
 };
