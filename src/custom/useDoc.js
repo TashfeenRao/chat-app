@@ -1,0 +1,17 @@
+import { useState, useEffect } from "react";
+import { db } from "../firebase";
+
+const useChannel = (path) => {
+  const [doc, setDoc] = useState(null);
+
+  useEffect(() => {
+    return db.doc(path).onSnapshot((doc) => {
+      setDoc({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+  }, [path]);
+  return doc;
+};
+export default useChannel;
