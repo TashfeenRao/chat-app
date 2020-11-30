@@ -1,6 +1,7 @@
 import useCollection from "../../custom/useCollections";
 import useDoc from "../../custom/useDocWithCache";
 import formatDate from "date-fns/format";
+import isSameDay from "date-fns/isSameDay";
 
 export default function Messages({ channelId }) {
   const message = useCollection(`channels/${channelId}/messages`, "createdAt");
@@ -8,8 +9,8 @@ export default function Messages({ channelId }) {
     <div className="Messages">
       <div className="EndOfMessages">That's every message!</div>
       {message.map((mess, index) => {
-        const showDate = false;
         const previous = message[index - 1];
+        const showDate = decideDate(previous, mess);
         const avatarCondition = decideAvatar(previous, mess);
         return avatarCondition ? (
           <ShowAvatar key={mess.id} mess={mess} showDate={showDate} />
@@ -32,7 +33,9 @@ const ShowAvatar = ({ mess, showDate }) => {
       {showDate && (
         <div className="Day">
           <div className="DayLine" />
-          <div className="DayText">12/6/2018</div>
+          <div className="DayText">
+            {formatDate(mess.createdAt.seconds * 1000, "d/M/Y")}
+          </div>
           <div className="DayLine" />
         </div>
       )}
@@ -54,6 +57,16 @@ const ShowAvatar = ({ mess, showDate }) => {
       </div>
     </div>
   );
+};
+
+const decideDate = (previous, message) => {
+  if (!previous) return true;
+
+  const isNewDay = !isSameDay(
+    message.createdAt.seconds * 1000,
+    previous.createdAt.seconds * 1000
+  );
+  return isNewDay;
 };
 
 const decideAvatar = (previous, message) => {
