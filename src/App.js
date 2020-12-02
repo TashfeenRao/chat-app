@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Channel from "./components/Channels/Channel";
 import Nav from "./components/Nav/Nav";
-import { db, firebase } from "./firebase";
+import { db, firebase, userPresence } from "./firebase";
 import {
   BrowserRouter as Router,
   Switch,
@@ -68,6 +68,7 @@ const useAuth = () => {
           id: firebaseUser.uid,
         };
         setUser(user);
+        userPresence(user);
         db.collection("users").doc(user.id).set(user, { merge: true });
       } else {
         setUser(null);

@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBISpu66jDd6DLuUC5dW7ByU3yrkBlsiNk",
@@ -13,5 +14,9 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const rtdb = firebase.database();
+function userPresence(user) {
+  rtdb.ref(".info/connected").on("value", (snapshot) => {});
+}
 
-export { db, firebase };
+export { db, firebase, userPresence };

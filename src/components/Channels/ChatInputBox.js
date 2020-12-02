@@ -20,7 +20,7 @@ export default function ChatInputBox({ user, channelId }) {
     <form onSubmit={handleSubmit} className="ChatInputBox" readOnly>
       <input
         className="ChatInput"
-        placeholder="Message #general"
+        placeholder={`Message #${channelId}`}
         onChange={(e) => setInput(e.target.value)}
       />
     </form>
