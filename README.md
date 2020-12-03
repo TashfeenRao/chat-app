@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <br>
+    Chat Fun App
+  <br>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">Developed real-time chatting app using firebase and real-time DB.
+Users can login with their google account, can do group chat in different channels, see members of channels
+Built with: React, Hooks,  Javascript, Firebase, date-FNS, react-router, Webpack, Babel, Eslint, GitHub, Netlify.
 
-## Available Scripts
+</h4>
+</br>
 
-In the project directory, you can run:
+![Contributors](https://img.shields.io/badge/Contributor-Tashfeen-green)
+![build](https://img.shields.io/badge/build-passing-green)
+![NPM](https://img.shields.io/badge/NPM-14.01-green)
+![npm bundle size](https://img.shields.io/bundlephobia/min/react?color=green)
+![Version](https://img.shields.io/badge/version-1.0.0-green)
+![Hackage-Deps](https://img.shields.io/hackage-deps/v/json)
+![Issues](https://img.shields.io/badge/issues-0-green)
+![Twitter Follow](https://img.shields.io/twitter/follow/TashfeenDev?label=Tashfeen&style=social)
 
-### `yarn start`
+</br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#screen-shot">Screen Shot</a> •
+  <a href="#license">License</a> •
+  <a href="#authors">Authors</a> •
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Key Features
 
-### `yarn test`
+- User can Login with google account
+- User can send and recieve messages in different channels
+- User can see members of the channels
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How To Use
 
-### `yarn build`
+```bash
+# Clone this repository
+$ git clone https://github.com/TashfeenRao/chat-app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Go into the repository
+$ cd chat-app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Install dependencies
+$ npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Run the app
+$ npm start
+```
 
-### `yarn eject`
+## Live version
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+https://chat-app-8b4ed.web.app/.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Emailware
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Book-store is an Open-source. if you liked using this app or it has helped you in any way, I'd like you to send me an email at <raotashfeen25@gmail.com> about anything you'd want to say about this software. I'd appreciate it!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Credits
 
-## Learn More
+This software uses the following open-source packages:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [React](https://React.org/)
+- [Redux](https://Redux.org/)
+- [Node.js](https://nodejs.org/)
+- [Webpack](https://webpack.js.org/)
+- [Babel](https://babeljs.io/)
+- [Jest](https://jestjs.io/)
+- [Microverse](http://microverse.org/)
+- [Odin Project](https://www.theodinproject.com/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+MIT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Authors
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<h2>Tashfeen Rao</h2>
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Porfolio [Tashfeen Rao](https://tashfeen-rao.netlify.app/) &nbsp;&middot;&nbsp;
+</br>
+Email: tashfeendev@gmail.com &nbsp;&middot;&nbsp;
+</br>
+AngelList [TashfeenRao](https://angel.co/u/tashfeen-rao) &nbsp;&middot;&nbsp;
+</br>
+LinkedIn [Tashfeen Rao](https://www.linkedin.com/in/tashfeen-rao/) &nbsp;&middot;&nbsp;
+</br>
+Twitter [@TashfeenDev](https://twitter.com/TashfeenDev) &nbsp;&middot;&nbsp;
