@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Channel from "./components/Channels/Channel";
 import Nav from "./components/Nav/Nav";
 import { db, firebase, userPresence } from "./firebase";
+import "./app.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+import Login from "./components/Login/Login";
 
 function App() {
   const user = useAuth();
@@ -15,7 +17,7 @@ function App() {
   if (!user) return <Login />;
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{ backgroundColor: "#ffff" }}>
         <Nav user={user} />
         {user && (
           <Switch>
@@ -29,32 +31,6 @@ function App() {
     </Router>
   );
 }
-
-const Login = () => {
-  const [authError, setAuthError] = useState({});
-  const handleSignIn = async () => {
-    try {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      await firebase.auth().signInWithPopup(provider);
-    } catch (error) {
-      setAuthError(error);
-    }
-  };
-
-  return (
-    <div className="Login">
-      <h1>Chat !</h1>
-      <button onClick={handleSignIn}>SignIn</button>
-      {authError && (
-        <div>
-          <p>Sorry, There is proble while loging</p>
-          <i>{authError.message}</i>
-          <p>Please, try again</p>
-        </div>
-      )}
-    </div>
-  );
-};
 
 const useAuth = () => {
   const [user, setUser] = useState(null);

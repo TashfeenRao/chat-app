@@ -1,11 +1,16 @@
-body {
+* {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #454545;
+  background-image: none;
 }
 
 .App {
@@ -18,7 +23,7 @@ body {
 }
 
 .Nav {
-  background: #454545;
+  background-color: #f04a4d;
   color: #fff;
   width: 225px;
   display: flex;
@@ -154,9 +159,6 @@ body {
   font-size: 80%;
 }
 
-.MessageContent {
-}
-
 .Message.no-avatar {
   margin-left: 38px;
 }
@@ -184,6 +186,7 @@ body {
   padding: 20px;
   border-left: solid 1px #ccc;
   width: 150px;
+  background-color: #f04a4d;
 }
 
 .Member {
@@ -214,9 +217,4 @@ body {
 
 .LoadMore {
   text-align: center;
-}
-
-.Login {
-  text-align: center;
-  margin-top: 55px;
 }

@@ -15,9 +15,9 @@ const ChatScroller = (props) => {
     }
   });
   const handleScroll = () => {
-    const node = ref;
-    const { scrollTop, scrollHeight, scrollClient } = node;
-    const atBottom = scrollHeight === scrollTop + scrollClient;
+    const node = ref.current;
+    const { scrollTop, scrollHeight, clientHeight } = node;
+    const atBottom = scrollHeight === scrollTop + clientHeight;
     shouldScroll.current = atBottom;
   };
 
